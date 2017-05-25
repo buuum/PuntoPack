@@ -1,5 +1,5 @@
-Simple php api class with TIPSA
-================================
+Mondial Relay Punto Pack simple API
+===================================
 
 [![Packagist](https://img.shields.io/packagist/v/buuum/puntopack.svg)](https://packagist.org/packages/buuum/puntopack)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](#license)
