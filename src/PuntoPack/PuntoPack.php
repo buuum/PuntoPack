@@ -2,14 +2,10 @@
 
 namespace Buuum;
 
-use Buuum\Exceptions\InvalidEngineOrKeyException;
-use Buuum\Exceptions\InvalidValuesException;
+use Buuum\Exceptions\ApiException;
 
 class PuntoPack
 {
-
-    const INVALIDMERCHANT = [1, 2, 3, 5, 8];
-
     /**
      * @var string
      */
@@ -52,13 +48,6 @@ class PuntoPack
     private function getResponse($function, $params)
     {
         $response = $this->getClient()->$function($params);
-        if (in_array($response->{$function . 'Result'}->STAT, self::INVALIDMERCHANT)) {
-            throw new InvalidEngineOrKeyException();
-        }
-
-        if ($response->{$function . 'Result'}->STAT > 96) {
-            throw new InvalidValuesException();
-        }
 
         $output = new \stdClass();
         $output->code = $response->{$function . 'Result'}->STAT;

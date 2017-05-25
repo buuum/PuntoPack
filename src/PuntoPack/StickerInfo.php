@@ -9,12 +9,52 @@ final class StickerInfo
     private $weight;
     private $mumber_of_packages;
 
-    public function __construct($collection_mode, $delivery_mode, $weight, $mumber_of_packages, $value = 0)
+    public function __construct($collection_mode, $delivery_mode, $weight, $number_of_packages, $value = 0)
     {
+        $this->setCollectionMode($collection_mode);
+        $this->setDeliveryMode($delivery_mode);
+        $this->setWeight($weight);
+        $this->setnumberPackages($number_of_packages);
+        $this->setValue($value);
+    }
+
+    protected function setCollectionMode($collection_mode)
+    {
+        if(!preg_match('@^(CCC|CDR|CDS|REL)$@', $collection_mode)){
+            throw new \InvalidArgumentException();
+        }
         $this->collection_mode = $collection_mode;
+    }
+
+    protected function setDeliveryMode($delivery_mode)
+    {
+        if(!preg_match('@^(LCC|LD1|LDS|24R|24L|24X|ESP|DRI)$@', $delivery_mode)){
+            throw new \InvalidArgumentException();
+        }
         $this->delivery_mode = $delivery_mode;
+    }
+
+    protected function setWeight($weight)
+    {
+        if(!preg_match('@^[0-9]{3,7}$@', $weight)){
+            throw new \InvalidArgumentException();
+        }
         $this->weight = $weight;
+    }
+
+    protected function setnumberPackages($mumber_of_packages)
+    {
+        if(!preg_match('@^[0-9]{1,2}$@', $mumber_of_packages)){
+            throw new \InvalidArgumentException();
+        }
         $this->mumber_of_packages = $mumber_of_packages;
+    }
+
+    protected function setValue($value)
+    {
+        if(!preg_match('@^[0-9]{1,7}$@', $value)){
+            throw new \InvalidArgumentException();
+        }
         $this->value = $value;
     }
 

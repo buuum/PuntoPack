@@ -5,27 +5,44 @@ namespace Buuum;
 final class StickerPointRelais
 {
     private $pointId;
-    private $city;
+    private $country;
 
-    public function __construct($pointId, $city = 'ES')
+    public function __construct($pointId, $country = 'ES')
     {
-        $this->pointId = $pointId;
-        $this->city = $city;
+        $this->setPointId($pointId);
+        $this->setCountry($country);
     }
+
+    protected function setPointId($pointId)
+    {
+        if (!preg_match('@^(|[0-9]{6})$@', $pointId)) {
+            throw new \InvalidArgumentException();
+        }
+        $this->pointId = $pointId;
+    }
+
+    protected function setCountry($country)
+    {
+        if (!preg_match('@^[A-Z]{2}$@', $country)) {
+            throw new \InvalidArgumentException();
+        }
+        $this->country = $country;
+    }
+
 
     public function id()
     {
         return $this->pointId;
     }
 
-    public function city()
+    public function country()
     {
-        return $this->city;
+        return $this->country;
     }
 
     public function equals(StickerPointRelais $stickerInfo)
     {
-        return $this->city() === $stickerInfo->city()
+        return $this->country() === $stickerInfo->country()
             && $this->id() === $stickerInfo->id();
     }
 

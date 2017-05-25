@@ -9,11 +9,27 @@ class StickerPointRelaisTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf(\Buuum\StickerPointRelais::class, $stickerInfo);
     }
 
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testIncorrectPointId()
+    {
+        $stickerInfo = new \Buuum\StickerPointRelais('3432');
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testIncorrectCountry()
+    {
+        $stickerInfo = new \Buuum\StickerPointRelais('043432','ESD');
+    }
+
     public function testGetValue()
     {
         $stickerInfo = new \Buuum\StickerPointRelais('043432');
         $this->assertEquals('043432', $stickerInfo->id());
-        $this->assertEquals('ES', $stickerInfo->city());
+        $this->assertEquals('ES', $stickerInfo->country());
     }
 
     public function testEquals()

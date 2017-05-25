@@ -14,12 +14,68 @@ final class StickerAddresse
 
     public function __construct($name, $addresse, $city, $postal_code, $phone, $lang = 'ES', $country = 'ES')
     {
+        $this->setName($name);
+        $this->setAddresse($addresse);
+        $this->setCity($city);
+        $this->setPostalCode($postal_code);
+        $this->setPhone($phone);
+        $this->setLang($lang);
+        $this->setCountry($country);
+    }
+
+    protected function setName($name)
+    {
+        if(!preg_match('@^[0-9a-zA-Z_\-\'., /]{2,32}$@', $name)){
+            throw new \InvalidArgumentException();
+        }
         $this->name = $name;
+    }
+
+    protected function setAddresse($addresse)
+    {
+        if(!preg_match('@^[0-9a-zA-Z_\-\'., /]{0,32}$@', $addresse)){
+            throw new \InvalidArgumentException();
+        }
         $this->addresse = $addresse;
+    }
+
+    protected function setCity($city)
+    {
+        if(!preg_match('@^[a-zA-Z_\-\' ]{2,26}$@', $city)){
+            throw new \InvalidArgumentException();
+        }
         $this->city = $city;
+    }
+
+    protected function setPostalCode($postal_code)
+    {
+        if(!preg_match('@^[0-9]{5}$@', $postal_code)){
+            throw new \InvalidArgumentException();
+        }
         $this->postal_code = $postal_code;
+    }
+
+    protected function setPhone($phone)
+    {
+        if(!preg_match('@^\+[0-9]{9,13}$@', $phone)){
+            throw new \InvalidArgumentException();
+        }
         $this->phone = $phone;
+    }
+
+    protected function setLang($lang)
+    {
+        if(!preg_match('@^[A-Z]{2}$@', $lang)){
+            throw new \InvalidArgumentException();
+        }
         $this->lang = $lang;
+    }
+
+    protected function setCountry($country)
+    {
+        if(!preg_match('@^[A-Z]{2}$@', $country)){
+            throw new \InvalidArgumentException();
+        }
         $this->country = $country;
     }
 

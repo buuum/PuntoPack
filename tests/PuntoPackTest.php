@@ -26,21 +26,18 @@ class PuntoPackTest extends \PHPUnit\Framework\TestCase
         $this->key = '';
     }
 
-    /**
-     * @expectedException \Buuum\Exceptions\InvalidEngineOrKeyException
-     */
     public function testCreate()
     {
         $puntopack = new \Buuum\PuntoPack('', '');
-        $puntopack->getTracking('id');
+        $response = $puntopack->getTracking('id');
+
+        $this->assertTrue(in_array($response->code, [1, 2, 3, 5, 8]));
     }
 
-    /**
-     * @expectedException \Buuum\Exceptions\InvalidValuesException
-     */
     public function testgetTrackingException()
     {
         $tracking = $this->puntopack->getTracking('31187802');
+        $this->assertTrue($tracking->code != 0);
     }
 
     public function testgetTracking()
@@ -60,8 +57,8 @@ class PuntoPackTest extends \PHPUnit\Framework\TestCase
     public function testCreateOkSticky()
     {
         $info = new \Buuum\StickerInfo('CCC', 'LCC', 1000, 1, 0);
-        $addresse = new \Buuum\StickerAddresse('Nombre', 'direccion sender', 'Badalona', '08390', '+34600606060');
-        $addresse2 = new \Buuum\StickerAddresse('Nombre 2', 'direccion 2 ', 'Montgat', '08390', '+34600606064');
+        $addresse = new \Buuum\StickerAddresse('NOMBRE', 'direccion sender', 'Badalona', '08390', '+34600606060');
+        $addresse2 = new \Buuum\StickerAddresse('NOMBRE', 'direccion 2 ', 'Montgat', '08390', '+34600606064');
 
         $sticky = $this->puntopack->createSticker($info, $addresse, $addresse2);
 

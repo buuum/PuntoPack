@@ -9,6 +9,46 @@ class StickerInfoTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf(\Buuum\StickerInfo::class, $stickerInfo);
     }
 
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testIncorrectCollectionMode()
+    {
+        $stickerInfo = new \Buuum\StickerInfo('C3CC', 'LCC', 1000, 1, 0);
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testIncorrectDeliveryMode()
+    {
+        $stickerInfo = new \Buuum\StickerInfo('CCC', 'L3CC', 1000, 1, 0);
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testIncorrectWeight()
+    {
+        $stickerInfo = new \Buuum\StickerInfo('CCC', 'LCC', null, 1, 0);
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testIncorrectNumberPackages()
+    {
+        $stickerInfo = new \Buuum\StickerInfo('CCC', 'LCC', 1000,  null, 0);
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testIncorrectValue()
+    {
+        $stickerInfo = new \Buuum\StickerInfo('CCC', 'LCC', 1000, 1, null);
+    }
+
     public function testGetValue()
     {
         $stickerInfo = new \Buuum\StickerInfo('CCC', 'LCC', 1000, 1, 0);
