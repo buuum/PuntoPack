@@ -1,0 +1,29 @@
+{
+  "name": "buuum/puntopack",
+  "type": "library",
+  "description": "Mondial Relay Punto Pack simple API",
+  "homepage": "https://github.com/buuum/PuntoPack",
+  "keywords": [
+    "mondial relay",
+    "punto pack",
+    "api"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Alfons Martinez",
+      "email": "alfonsmartinezparra@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Buuum\\": "src/PuntoPack"
+    }
+  },
+  "require": {
+    "php": ">=5.5.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*"
+  }
+}
