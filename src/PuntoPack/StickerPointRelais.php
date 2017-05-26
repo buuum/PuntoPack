@@ -16,7 +16,7 @@ final class StickerPointRelais
     protected function setPointId($pointId)
     {
         if (!preg_match('@^(|[0-9]{6})$@', $pointId)) {
-            throw new \InvalidArgumentException();
+            throw new \InvalidArgumentException('pointId');
         }
         $this->pointId = $pointId;
     }
@@ -24,7 +24,7 @@ final class StickerPointRelais
     protected function setCountry($country)
     {
         if (!preg_match('@^[A-Z]{2}$@', $country)) {
-            throw new \InvalidArgumentException();
+            throw new \InvalidArgumentException('Country');
         }
         $this->country = $country;
     }

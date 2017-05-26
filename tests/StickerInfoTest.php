@@ -11,6 +11,7 @@ class StickerInfoTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage CollectionMode
      */
     public function testIncorrectCollectionMode()
     {
@@ -19,6 +20,7 @@ class StickerInfoTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage DeliveryMode
      */
     public function testIncorrectDeliveryMode()
     {
@@ -27,6 +29,7 @@ class StickerInfoTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage Weight
      */
     public function testIncorrectWeight()
     {
@@ -35,6 +38,7 @@ class StickerInfoTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage NumberPackages
      */
     public function testIncorrectNumberPackages()
     {
@@ -43,6 +47,7 @@ class StickerInfoTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage Value
      */
     public function testIncorrectValue()
     {

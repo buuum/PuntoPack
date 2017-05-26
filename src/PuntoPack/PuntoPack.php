@@ -72,7 +72,9 @@ class PuntoPack
 
             'Expe_Langage' => $sender->lang(),
             'Expe_Ad1'     => $sender->name(),
+            'Expe_Ad2'     => $sender->extraname(),
             'Expe_Ad3'     => $sender->addresse(),
+            'Expe_Ad4'     => $sender->extraaddresse(),
             'Expe_Ville'   => $sender->city(),
             'Expe_CP'      => $sender->postalCode(),
             'Expe_Pays'    => $sender->country(),
@@ -80,7 +82,9 @@ class PuntoPack
 
             'Dest_Langage' => $addressee->lang(),
             'Dest_Ad1'     => $addressee->name(),
+            'Dest_Ad2'     => $addressee->extraname(),
             'Dest_Ad3'     => $addressee->addresse(),
+            'Dest_Ad4'     => $addressee->extraaddresse(),
             'Dest_Ville'   => $addressee->city(),
             'Dest_CP'      => $addressee->postalCode(),
             'Dest_Pays'    => $addressee->country(),
@@ -92,7 +96,7 @@ class PuntoPack
         ];
 
         if ($stickerPointRelais) {
-            $params['LIV_Rel_Pays'] = $stickerPointRelais->city();
+            $params['LIV_Rel_Pays'] = $stickerPointRelais->country();
             $params['LIV_Rel'] = $stickerPointRelais->id();
         }
 

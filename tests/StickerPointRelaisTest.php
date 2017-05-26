@@ -11,6 +11,7 @@ class StickerPointRelaisTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage pointId
      */
     public function testIncorrectPointId()
     {
@@ -19,6 +20,7 @@ class StickerPointRelaisTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage Country
      */
     public function testIncorrectCountry()
     {

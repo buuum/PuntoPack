@@ -57,10 +57,26 @@ class PuntoPackTest extends \PHPUnit\Framework\TestCase
     public function testCreateOkSticky()
     {
         $info = new \Buuum\StickerInfo('CCC', 'LCC', 1000, 1, 0);
-        $addresse = new \Buuum\StickerAddresse('NOMBRE', 'direccion sender', 'Badalona', '08390', '+34600606060');
-        $addresse2 = new \Buuum\StickerAddresse('NOMBRE', 'direccion 2 ', 'Montgat', '08390', '+34600606064');
+        $addresse = new \Buuum\StickerAddresse('NOMBRE', '', 'direccion sender', '', 'Badalona', '08390', '+34600606060');
+        $addresse2 = new \Buuum\StickerAddresse('NOMBRE', '', 'direccion 2 ', '', 'Montgat', '08390', '+34600606064');
 
         $sticky = $this->puntopack->createSticker($info, $addresse, $addresse2);
+
+        $this->assertEquals(0, $sticky->code);
+        $this->assertTrue(is_string($sticky->response->ExpeditionNum));
+        $this->assertTrue(is_string($sticky->response->URL_Etiquette));
+        $this->assertNotEmpty($sticky->response->ExpeditionNum);
+        $this->assertNotEmpty($sticky->response->URL_Etiquette);
+    }
+
+    public function testCreateOkStickyWithPointRelais()
+    {
+        $info = new \Buuum\StickerInfo('CCC', 'LCC', 1000, 1, 0);
+        $addresse = new \Buuum\StickerAddresse('NOMBRE', '', 'direccion sender', '', 'Badalona', '08390', '+34600606060');
+        $addresse2 = new \Buuum\StickerAddresse('NOMBRE', '', 'direccion 2 ', '', 'Montgat', '08390', '+34600606064');
+        $point = new \Buuum\StickerPointRelais('054160');
+
+        $sticky = $this->puntopack->createSticker($info, $addresse, $addresse2, null, $point);
 
         $this->assertEquals(0, $sticky->code);
         $this->assertTrue(is_string($sticky->response->ExpeditionNum));
