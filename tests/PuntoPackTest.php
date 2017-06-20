@@ -22,8 +22,8 @@ class PuntoPackTest extends \PHPUnit\Framework\TestCase
 
     private function getCredentials()
     {
-        $this->engine = 'BDTEST13';
-        $this->key = 'PrivateK';
+        $this->engine = '';
+        $this->key = '';
     }
 
     public function testCreate()
