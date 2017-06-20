@@ -2,8 +2,6 @@
 
 namespace Buuum;
 
-use Buuum\Exceptions\ApiException;
-
 class PuntoPack
 {
     /**
@@ -79,6 +77,7 @@ class PuntoPack
             'Expe_CP'      => $sender->postalCode(),
             'Expe_Pays'    => $sender->country(),
             'Expe_Tel1'    => $sender->phone(),
+            'Expe_Mail'    => $sender->email(),
 
             'Dest_Langage' => $addressee->lang(),
             'Dest_Ad1'     => $addressee->name(),
@@ -89,6 +88,7 @@ class PuntoPack
             'Dest_CP'      => $addressee->postalCode(),
             'Dest_Pays'    => $addressee->country(),
             'Dest_Tel1'    => $addressee->phone(),
+            'Dest_Mail'    => $addressee->email(),
 
             'Poids'      => $stickerInfo->weight(),
             'NbColis'    => $stickerInfo->numberPackages(),

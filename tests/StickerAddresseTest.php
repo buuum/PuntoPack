@@ -38,6 +38,15 @@ class StickerAddresseTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage Email
+     */
+    public function testIncorrectEmail()
+    {
+        $stickerInfo = new \Buuum\StickerAddresse('NOMBRE', '', 'direccion sender', '', 'Badalona', '08390', '+34600606060','rwrwres');
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
      * @expectedExceptionMessage ExtraAddresse
      */
     public function testIncorrectExtraAddress()
@@ -78,7 +87,7 @@ class StickerAddresseTest extends \PHPUnit\Framework\TestCase
      */
     public function testIncorrectLang()
     {
-        $stickerInfo = new \Buuum\StickerAddresse('NOMBRE', '', 'direcci sender', '', 'Badalona', '08390', '+34600606060','fff');
+        $stickerInfo = new \Buuum\StickerAddresse('NOMBRE', '', 'direcci sender', '', 'Badalona', '08390', '+34600606060', '', 'fff');
     }
 
     /**
@@ -87,7 +96,7 @@ class StickerAddresseTest extends \PHPUnit\Framework\TestCase
      */
     public function testIncorrectCountry()
     {
-        $stickerInfo = new \Buuum\StickerAddresse('NOMBRE', '', 'direcci sender', '', 'Badalona', '08390', '+34600606060','ES','sss');
+        $stickerInfo = new \Buuum\StickerAddresse('NOMBRE', '', 'direcci sender', '', 'Badalona', '08390', '+34600606060', '', 'ES','sss');
     }
 
     public function testGetValue()
@@ -106,7 +115,7 @@ class StickerAddresseTest extends \PHPUnit\Framework\TestCase
     {
         $stickerInfo = new \Buuum\StickerAddresse('NOMBRE', '', 'direccion sender', '', 'Badalona', '08390', '+34600606060');
         $stickerInfo2 = new \Buuum\StickerAddresse('NOMBRE', '', 'direccion sender', '', 'Badalona', '08390', '+34600606060');
-        $stickerInfo3 = new \Buuum\StickerAddresse('NOMBRE', '', 'direccion sender', '', 'Badalona', '08390', '+34600606060', 'FR');
+        $stickerInfo3 = new \Buuum\StickerAddresse('NOMBRE', '', 'direccion sender', '', 'Badalona', '08390', '+34600606060', '','FR');
 
         $this->assertTrue($stickerInfo->equals($stickerInfo2));
         $this->assertFalse($stickerInfo->equals($stickerInfo3));
