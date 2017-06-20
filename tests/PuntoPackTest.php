@@ -57,7 +57,7 @@ class PuntoPackTest extends \PHPUnit\Framework\TestCase
     public function testCreateOkSticky()
     {
         $info = new \Buuum\StickerInfo('CCC', 'LCC', 1000, 1, 0);
-        $addresse = new \Buuum\StickerAddresse('NOMBRE', '', 'direccion sender', '', 'Badalona', '08390', '+34600606060','');
+        $addresse = new \Buuum\StickerAddresse('NOMBRE', '', 'direccion sender', '', 'Badalona', '08390', '+34600606060');
         $addresse2 = new \Buuum\StickerAddresse('NOMBRE', '', 'direccion 2 ', '', 'Montgat', '08390', '+34600606064','');
 
         $sticky = $this->puntopack->createSticker($info, $addresse, $addresse2);
