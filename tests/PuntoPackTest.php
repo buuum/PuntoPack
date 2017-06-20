@@ -51,7 +51,7 @@ class PuntoPackTest extends \PHPUnit\Framework\TestCase
      */
     public function testNotCreatedStickyByValues()
     {
-        $sticky = $this->puntopack->createSticker(null, null, null);
+        $this->puntopack->createSticker(null, null, null);
     }
 
     public function testCreateOkSticky()
@@ -102,8 +102,10 @@ class PuntoPackTest extends \PHPUnit\Framework\TestCase
 
         $this->assertTrue(is_string($stickers->response->URL_PDF_A4));
         $this->assertTrue(is_string($stickers->response->URL_PDF_A5));
+        $this->assertTrue(is_string($stickers->response->URL_PDF_10x15));
         $this->assertNotEmpty($stickers->response->URL_PDF_A4);
         $this->assertNotEmpty($stickers->response->URL_PDF_A5);
+        $this->assertNotEmpty($stickers->response->URL_PDF_10x15);
     }
 
 }

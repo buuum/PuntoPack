@@ -118,7 +118,9 @@ class PuntoPack
 
         $params = $this->securizedParams($params);
 
-        return $this->getResponse('WSI2_GetEtiquettes', $params);
+        $result = $this->getResponse('WSI2_GetEtiquettes', $params);
+        $result->response->URL_PDF_10x15 = str_replace('format=A4', 'format=10x15', $result->response->URL_PDF_A4);
+        return $result;
     }
 
     private function getClient()
